@@ -1,0 +1,22 @@
+$padding-top: 0.4rem;
+$icon-space: 2.5rem;
+
+.text-box {
+  border: none;
+  position: relative;
+  & > i {
+    position: absolute;
+    top: $padding-top;
+    left: $padding-top;
+    font-size: x-large;
+  }
+  & > input {
+    display: inline-block;
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: $padding-top;
+    padding-left: $icon-space;
+    border-bottom: 2px solid black;
+  }
+}
