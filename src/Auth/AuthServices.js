@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API } from "../Api/ApiConfig";
+import { API } from "../api/ApiConfig";
 
 class AuthServices {
   login(credentials) {
