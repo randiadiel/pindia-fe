@@ -1,8 +1,10 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.scss";
+import AuthServices from "./Auth/AuthServices";
 
 function App() {
+  AuthServices.login("halo");
   return (
     <div className="App">
       <header className="App-header">
