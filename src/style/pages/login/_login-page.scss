@@ -6,13 +6,14 @@
   width: 100%;
   background-size: cover;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   & > .form-box {
     border-radius: 10px;
-    width: 28%;
+    width: 25rem;
     height: 85%;
-    position: absolute;
-    margin: 3% 36% 3% 36%;
     background-color: black;
     opacity: 0.5;
   }
