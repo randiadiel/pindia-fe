@@ -1,0 +1,19 @@
+.login-page {
+  border-style: solid;
+  border-color: black;
+  border-width: 20px;
+  background-image: url("../../../assets/bg.jpg");
+  width: 100%;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  & > .form-box {
+    border-radius: 10px;
+    width: 28%;
+    height: 85%;
+    position: absolute;
+    margin: 3% 36% 3% 36%;
+    background-color: black;
+    opacity: 0.5;
+  }
+}
