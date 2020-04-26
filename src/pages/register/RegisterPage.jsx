@@ -1,12 +1,16 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import TextBox from "../../components/common/input/TextBox";
+import { inputs } from "./RegisterPageonfig";
 
 class RegisterPage extends Component {
   render() {
     return (
-      <div>
-        RegisterPage
-        <Link to="/">To Home</Link>
+      <div className="register-page">
+        <div className="form-box">
+          {inputs.map((input) => (
+            <TextBox input={input}></TextBox>
+          ))}
+        </div>
       </div>
     );
   }
