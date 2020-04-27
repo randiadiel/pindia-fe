@@ -4,7 +4,11 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="login-page">
-        <div className="form-box"></div>
+        <div className="form-box">
+          <h1>Join us now!</h1>
+        </div>
+        <div className="layer"></div>
+        <div className="image"></div>
       </div>
     );
   }
