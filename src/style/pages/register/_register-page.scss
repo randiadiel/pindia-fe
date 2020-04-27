@@ -1,20 +1,35 @@
 .register-page {
-  border-style: solid;
-  border-color: black;
-  border-width: 20px;
-  background-image: url("../../../assets/bg.jpg");
-  width: 100%;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  & > .form-box {
-    border-radius: 10px;
-    width: 25rem;
-    height: 85%;
-    background-color: rgba($color: #000000, $alpha: 0.5);
-    padding: 2rem;
+  & .form-box {
+    background-color: white;
+    & > .container {
+      height: 100%;
+    }
+    & img {
+      height: 10%;
+      padding: 1rem;
+    }
+    & form {
+      padding: 1rem;
+      height: 90%;
+      display: flex;
+      align-items: center;
+      & h1 {
+        font-family: cerapro-bold;
+      }
+    }
+  }
+  & .layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000, $alpha: 0.4);
+    margin-left: -15px;
+  }
+  & .image {
+    background-image: url("../../../assets/register-login-bg.jpg");
+    background-position-x: -2rem;
+    background-size: cover;
+    height: 100vh;
+    z-index: 1;
   }
 }
