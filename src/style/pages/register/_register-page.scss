@@ -1,4 +1,5 @@
 .register-page {
+  font-family: cerapro-regular;
   & .form-box {
     background-color: white;
     & > .container {
@@ -17,6 +18,15 @@
       & h1 {
         font-family: cerapro-bold;
         margin-bottom: 1rem;
+      }
+      & .registerButton {
+        width: 6rem;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: #ffc000;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 2px 2px 3px rgba($color: #000000, $alpha: 0.3);
       }
     }
   }

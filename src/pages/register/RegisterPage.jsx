@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import TextBox from "../../components/common/input/TextBox";
 import Logo from "../../assets/logo.png";
 import inputs from "./RegisterPageConfig";
+import "../../api/ApiConfig";
 
 class RegisterPage extends Component {
   state = {
@@ -13,9 +14,12 @@ class RegisterPage extends Component {
     password: "",
     confirm: "",
   };
-  onChange = async (e) => {
+  onChange = (e) => {
     const target = e.target;
     this.setState({ [target.name]: target.value });
+  };
+  handleSubmit = (e) => {
+    e.preventDefault();
     console.log(this.state.firstName);
   };
   render() {
@@ -35,7 +39,7 @@ class RegisterPage extends Component {
               <Link to="/">
                 <img src={Logo} alt="logo-pindia"></img>
               </Link>
-              <form className="container">
+              <form className="container" onSubmit={this.handleSubmit}>
                 <h1>Join us now!</h1>
                 <div className="row">
                   <div className="col-6">
@@ -73,6 +77,11 @@ class RegisterPage extends Component {
                   input={confirm}
                   value={this.state.confirm}
                 ></TextBox>
+                <input
+                  type="submit"
+                  value="Register"
+                  className="registerButton"
+                ></input>
               </form>
             </div>
           </div>
