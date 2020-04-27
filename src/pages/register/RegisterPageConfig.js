@@ -1,32 +1,40 @@
-export const inputs = [
-  {
-    name: "name",
+const inputs = {
+  firstName: {
+    name: "firstName",
     type: "text",
-    placeholder: "Full Name",
-    icon: "fa-user-circle",
+    placeholder: "John",
+    label: "First Name",
   },
-  {
+  lastName: {
+    name: "lastName",
+    type: "text",
+    placeholder: "Schmith",
+    label: "Last Name",
+  },
+  email: {
     name: "email",
     type: "email",
-    placeholder: "Email",
-    icon: "fa-envelope",
+    placeholder: "example@company.com",
+    label: "Email",
   },
-  {
-    name: "password",
-    type: "password",
-    placeholder: "Password",
-    icon: "fa-lock",
-  },
-  {
-    name: "confirm-password",
-    type: "password",
-    placeholder: "Confirm Password",
-    icon: "fa-lock",
-  },
-  {
+  phoneNumber: {
     name: "phone",
     type: "text",
-    placeholder: "Phone Number",
-    icon: "fa-phone",
+    placeholder: "08455655123",
+    label: "Phone Number",
   },
-];
+  password: {
+    name: "password",
+    type: "password",
+    placeholder: "Minimum 8 characters",
+    label: "Password",
+  },
+  confirm: {
+    name: "confirm",
+    type: "password",
+    placeholder: "Must be the same",
+    label: "Confirm Password",
+  },
+};
+
+export default inputs;

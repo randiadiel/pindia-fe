@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import TextBox from "../../components/common/input/TextBox";
+import { inputs } from "./LoginPageConfig";
 import Logo from "../../assets/logo.png";
 
 class LoginPage extends Component {
-  login = (e) => {
-    e.preventDefault();
-    console.log(e);
+  state = {
+    email: "",
+    password: "",
+  };
+  onChange = (e) => {
+    const target = e.target;
+    this.setState({ [target.name]: target.value });
   };
 
   render() {
     return (
-      <div className="register-page container-fluid">
+      <div className="login-page container-fluid">
         <div className="row">
           <div className="col-lg-6 form-box">
             <div className="container">
@@ -19,6 +25,14 @@ class LoginPage extends Component {
               </Link>
               <form className="container">
                 <h1>Login to your account</h1>
+                {inputs.map((input) => (
+                  <TextBox
+                    key={input.id}
+                    input={input}
+                    onChange={this.onChange}
+                    value={this.state[input.name]}
+                  ></TextBox>
+                ))}
               </form>
             </div>
           </div>

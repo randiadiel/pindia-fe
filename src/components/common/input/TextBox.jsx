@@ -1,21 +1,22 @@
-import React from "react";
-const onChange = (event) => {
-  console.log(event);
-};
-const TextBox = ({ input, onFormChange }) => {
-  const { type, placeholder, name, label } = input;
+import React, { Component } from "react";
 
-  return (
-    <div className="text-box">
-      <label>{label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        onChange={onChange()}
-      ></input>
-    </div>
-  );
-};
+class TextBox extends Component {
+  render() {
+    const { input, value, onChange } = this.props;
+    const { type, placeholder, name, label } = input;
+    return (
+      <div className="text-box">
+        <label>{label}</label>
+        <input
+          type={type}
+          placeholder={placeholder}
+          name={name}
+          onChange={onChange}
+          value={value}
+        ></input>
+      </div>
+    );
+  }
+}
 
 export default TextBox;
