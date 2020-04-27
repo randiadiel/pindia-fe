@@ -8,7 +8,7 @@ class RegisterPage extends Component {
       <div className="register-page">
         <div className="form-box">
           {inputs.map((input) => (
-            <TextBox input={input}></TextBox>
+            <TextBox key={input.placeholder} input={input}></TextBox>
           ))}
         </div>
       </div>

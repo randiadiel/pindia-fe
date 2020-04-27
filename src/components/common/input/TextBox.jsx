@@ -1,11 +1,19 @@
 import React from "react";
+const onChange = (event) => {
+  console.log(event);
+};
+const TextBox = ({ input, onFormChange }) => {
+  const { type, placeholder, name, label } = input;
 
-const TextBox = ({ input }) => {
-  const { icon, type, placeholder, name } = input;
   return (
     <div className="text-box">
-      <i className={`fa ${icon}`} aria-hidden="true"></i>
-      <input type={type} placeholder={placeholder} name={name}></input>
+      <label>{label}</label>
+      <input
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        onChange={onChange()}
+      ></input>
     </div>
   );
 };

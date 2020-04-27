@@ -2,13 +2,13 @@ export const inputs = [
   {
     name: "email",
     type: "email",
-    placeholder: "Email",
-    icon: "fa-user-circle",
+    placeholder: "example@company.com",
+    label: "Email Address",
   },
   {
     name: "password",
     type: "password",
-    placeholder: "Password",
-    icon: "fa-lock",
+    placeholder: "minimum 8 characters",
+    label: "Password",
   },
 ];

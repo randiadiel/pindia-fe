@@ -1,27 +1,24 @@
 $padding-top: 0.4rem;
-$icon-space: 2.5rem;
 
 .text-box {
+  font-family: cerapro-regular;
   border: none;
   position: relative;
-  & > i {
-    color: whitesmoke;
-    width: 20px;
-    text-align: center;
-    position: absolute;
-    top: $padding-top;
-    left: $padding-top;
-    font-size: x-large;
+  margin-bottom: 0.3rem;
+  & > label {
+    color: black;
+    margin: 0;
+    font-size: large;
   }
   & > input {
-    color: whitesmoke;
+    color: black;
     display: inline-block;
     outline: none;
     border: none;
     width: 100%;
     padding: $padding-top;
-    padding-left: $icon-space;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     background-color: rgba($color: #000000, $alpha: 0);
+    letter-spacing: 0.2px;
   }
 }
