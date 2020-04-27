@@ -5,7 +5,7 @@ class LoginPage extends Component {
     return (
       <div className="login-page">
         <div className="form-box">
-          <h1>Join us now!</h1>
+          <h1>login to your Account</h1>
         </div>
         <div className="layer"></div>
         <div className="image"></div>
