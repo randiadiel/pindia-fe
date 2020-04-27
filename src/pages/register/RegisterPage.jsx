@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TextBox from "../../components/common/input/TextBox";
+import Api from "../../api/Api";
 import Logo from "../../assets/logo.png";
 import inputs from "./RegisterPageConfig";
 import "../../api/ApiConfig";
@@ -20,8 +21,27 @@ class RegisterPage extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.firstName);
+    const {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      password,
+      confirm,
+    } = this.state;
+    if (password === confirm) {
+      const registered = {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        password,
+      };
+      console.log(Api.handlePost("/posts", registered));
+      console.log(Api.handleGet("/posts"));
+    } else alert("Password doesn't match");
   };
+
   render() {
     const {
       firstName,

@@ -18,7 +18,7 @@ const inputs = {
     label: "Email",
   },
   phoneNumber: {
-    name: "phone",
+    name: "phoneNumber",
     type: "text",
     placeholder: "08455655123",
     label: "Phone Number",

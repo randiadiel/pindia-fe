@@ -1,3 +1,3 @@
 export const API = {
-  BASE_URL: "localhost:3000/api",
+  BASE_URL: "https://jsonplaceholder.typicode.com",
 };
