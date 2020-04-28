@@ -141,7 +141,15 @@ class RegisterPage extends Component {
             </div>
           </div>
           <div className="col-lg-6 image">
-            <div className="layer"></div>
+            <div className="layer">
+              <div className="quotes">
+                <div className="doubleQuotes"></div>
+                <h4>LIFE'S TOO SHORT</h4>
+                <h1>TO WEAR BORING CLOTHES.</h1>
+                <h5>- CARLY CUSHNIE AND MICHELLE OCHS,</h5>
+                <h5> CUSHINE ET OCHS -</h5>
+              </div>
+            </div>
           </div>
         </div>
       </div>
