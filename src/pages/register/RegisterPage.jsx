@@ -7,23 +7,27 @@ import Logo from "../../assets/logo.png";
 import inputs from "./RegisterPageConfig";
 import "../../api/ApiConfig";
 import TextArea from "../../components/common/input/TextArea";
+import RegisterSuccess from "./RegisterSuccess";
 
 class RegisterPage extends Component {
   state = {
+    success: false,
+    message: "",
     firstName: "",
     lastName: "",
     email: "",
     telephone: "",
     password: "",
     confirm: "",
-    gender: "",
+    gender: "Male",
     birthday: "",
     address: "",
   };
   onChange = (e) => {
     const target = e.target;
     this.setState({
-      [target.name]: target.type === "select" ? target.selected : target.value,
+      [target.name]:
+        target.type === "select" ? target.selectedIndex : target.value,
     });
   };
   handleSubmit = async (e) => {
@@ -49,7 +53,13 @@ class RegisterPage extends Component {
         birthday,
         address,
       };
-      console.log(Api.handlePost("/users/create", registered));
+      const { status, message } = await Api.handlePost(
+        "/users/create",
+        registered
+      );
+      if (status === 200) {
+        this.setState({ success: true, message });
+      } else this.setState({ message });
     } else alert("Password doesn't match");
   };
 
@@ -65,6 +75,8 @@ class RegisterPage extends Component {
       birthday,
       address,
     } = inputs;
+    if (this.state.success === true)
+      return <RegisterSuccess message={this.state.message}></RegisterSuccess>;
     return (
       <div className="register-page container-fluid">
         <div className="row">

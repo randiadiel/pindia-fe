@@ -1,15 +1,32 @@
-import Axios from "axios";
+import axios from "axios";
 import { API } from "./ApiConfig";
 
 class Api {
   handlePost = async (endpoint, data) => {
-    const response = await Axios.post(API.BASE_URL + endpoint, data, {});
-    return response;
+    const promise = new Promise((resolve, reject) => {
+      axios.post(API.BASE_URL + endpoint, data).then(
+        (res) => {
+          resolve(res.data);
+        },
+        (err) => {
+          reject(err);
+        }
+      );
+    });
+    return promise;
   };
   handleGet = async (endpoint) => {
-    const promise = await Axios.get(API.BASE_URL + endpoint);
-    const response = await promise;
-    return response;
+    const promise = new Promise((resolve, reject) => {
+      axios.get(API.BASE_URL + endpoint).then(
+        (res) => {
+          resolve(res.data);
+        },
+        (err) => {
+          reject(err);
+        }
+      );
+    });
+    return promise;
   };
 }
 
