@@ -1,44 +1,55 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TextBox from "../../components/common/input/TextBox";
+import Dropdown from "../../components/common/input/Dropdown";
 import Api from "../../api/Api";
 import Logo from "../../assets/logo.png";
 import inputs from "./RegisterPageConfig";
 import "../../api/ApiConfig";
+import TextArea from "../../components/common/input/TextArea";
 
 class RegisterPage extends Component {
   state = {
     firstName: "",
     lastName: "",
     email: "",
-    phoneNumber: "",
+    telephone: "",
     password: "",
     confirm: "",
+    gender: "",
+    birthday: "",
+    address: "",
   };
   onChange = (e) => {
     const target = e.target;
-    this.setState({ [target.name]: target.value });
+    this.setState({
+      [target.name]: target.type === "select" ? target.selected : target.value,
+    });
   };
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const {
       firstName,
       lastName,
       email,
-      phoneNumber,
+      telephone,
       password,
       confirm,
+      gender,
+      birthday,
+      address,
     } = this.state;
     if (password === confirm) {
       const registered = {
-        firstName,
-        lastName,
+        name: firstName + " " + lastName,
         email,
-        phoneNumber,
+        telephone,
         password,
+        gender,
+        birthday,
+        address,
       };
-      console.log(Api.handlePost("/posts", registered));
-      console.log(Api.handleGet("/posts"));
+      console.log(Api.handlePost("/users/create", registered));
     } else alert("Password doesn't match");
   };
 
@@ -47,9 +58,12 @@ class RegisterPage extends Component {
       firstName,
       lastName,
       email,
-      phoneNumber,
+      telephone,
       password,
       confirm,
+      gender,
+      birthday,
+      address,
     } = inputs;
     return (
       <div className="register-page container-fluid">
@@ -84,9 +98,30 @@ class RegisterPage extends Component {
                 ></TextBox>
                 <TextBox
                   onChange={this.onChange}
-                  input={phoneNumber}
+                  input={telephone}
                   value={this.state.phoneNumber}
                 ></TextBox>
+                <div className="row">
+                  <div className="col-6">
+                    <Dropdown
+                      onChange={this.onChange}
+                      input={gender}
+                      selected={this.state.gender}
+                    ></Dropdown>
+                  </div>
+                  <div className="col-6">
+                    <TextBox
+                      onChange={this.onChange}
+                      input={birthday}
+                      value={this.state.birthday}
+                    ></TextBox>
+                  </div>
+                </div>
+                <TextArea
+                  onChange={this.onChange}
+                  input={address}
+                  value={this.state.address}
+                ></TextArea>
                 <TextBox
                   onChange={this.onChange}
                   input={password}

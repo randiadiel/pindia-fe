@@ -1,4 +1,4 @@
-import axios from "./node_modules/axios";
+import axios from "axios";
 import { API } from "../api/ApiConfig";
 
 class AuthServices {

@@ -3,11 +3,7 @@ import { API } from "./ApiConfig";
 
 class Api {
   handlePost = async (endpoint, data) => {
-    const response = await Axios.post(API.BASE_URL + endpoint, data, {
-      headers: {
-        "Content-type": "application/json;",
-      },
-    });
+    const response = await Axios.post(API.BASE_URL + endpoint, data, {});
     return response;
   };
   handleGet = async (endpoint) => {

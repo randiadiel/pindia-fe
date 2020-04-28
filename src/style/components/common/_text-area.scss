@@ -1,0 +1,24 @@
+$padding-top: 0.4rem;
+
+.text-area {
+  font-family: cerapro-regular;
+  border: none;
+  position: relative;
+  margin-bottom: 0.3rem;
+  & > label {
+    color: black;
+    margin: 0;
+    font-size: large;
+  }
+  & > textarea {
+    color: black;
+    display: inline-block;
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: $padding-top;
+    border-bottom: 1px solid black;
+    background-color: rgba($color: #000000, $alpha: 0);
+    letter-spacing: 0.2px;
+  }
+}
