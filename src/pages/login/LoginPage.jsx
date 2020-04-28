@@ -1,17 +1,38 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TextBox from "../../components/common/input/TextBox";
+import Alert from "../../components/common/alert/Alert";
 import { inputs } from "./LoginPageConfig";
 import Logo from "../../assets/logo.png";
+import AuthServices from "../../auth/AuthServices";
 
 class LoginPage extends Component {
   state = {
     email: "",
     password: "",
+    message: "",
+    error: false,
   };
   onChange = (e) => {
     const target = e.target;
     this.setState({ [target.name]: target.value });
+  };
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    const credential = {
+      email,
+      password,
+    };
+    const promise = await AuthServices.login(credential);
+    const { status, message, result } = promise.data;
+    if (status === 200) {
+      localStorage.setItem("userInfo", JSON.stringify(result));
+    } else {
+      this.setState({ error: true });
+      this.setState({ message });
+    }
   };
 
   render() {
@@ -23,7 +44,11 @@ class LoginPage extends Component {
               <Link to="/">
                 <img src={Logo} alt="logo-pindia"></img>
               </Link>
-              <form className="container">
+              <form className="container" onSubmit={this.handleSubmit}>
+                <Alert
+                  visible={this.state.error}
+                  message={this.state.message}
+                ></Alert>
                 <h1>Login to your account</h1>
                 {inputs.map((input) => (
                   <TextBox
