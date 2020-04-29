@@ -45,7 +45,7 @@ class LoginPage extends Component {
   };
 
   render() {
-    if (isLoggedIn) {
+    if (this.state.isLoggedIn) {
       return <Redirect to="/"></Redirect>;
     }
     return (
