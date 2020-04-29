@@ -22,16 +22,21 @@ class Api {
     });
     return promise;
   };
-  handleGet = async (endpoint) => {
+  handleGet = async (endpoint, isPrivate) => {
     const promise = new Promise((resolve, reject) => {
-      axios.get(API.BASE_URL + endpoint).then(
-        (res) => {
-          resolve(res.data);
-        },
-        (err) => {
-          reject(err);
-        }
-      );
+      axios
+        .get(
+          API.BASE_URL + endpoint,
+          isPrivate ? AuthServices.getAuthHeader() : {}
+        )
+        .then(
+          (res) => {
+            resolve(res.data);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
     return promise;
   };

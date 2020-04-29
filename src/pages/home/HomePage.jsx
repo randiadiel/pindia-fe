@@ -26,11 +26,16 @@ class HomePage extends Component {
       <div>
         <h1>HomePage</h1>
         {this.state.user.role === 0 ? (
-          <Link to="login">Login</Link>
+          <React.Fragment>
+            <Link to="login">Login</Link>
+            <Link to="register">Register</Link>
+          </React.Fragment>
         ) : (
-          <button onClick={this.handleLogout}>Logout</button>
+          <React.Fragment>
+            <button onClick={this.handleLogout}>Logout</button>
+            <Link to="shop">Go To Shop</Link>
+          </React.Fragment>
         )}
-        <Link to="register">Register</Link>
         {this.state.user.role === 1 && (
           <Link to="shop/create">Create Shop</Link>
         )}

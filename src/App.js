@@ -5,6 +5,7 @@ import LoginPage from "./pages/login/LoginPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import ProtectedRoute from "./components/common/protected-route/ProtectedRoute";
 import CreateShop from "./pages/shop/CreateShop";
+import ShopPage from "./pages/shop/ShopPage";
 import "./style/index.scss";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         path="/shop/create"
         component={CreateShop}
       ></ProtectedRoute>
+      <ProtectedRoute exact path="/shop" component={ShopPage}></ProtectedRoute>
     </Switch>
   );
 }
