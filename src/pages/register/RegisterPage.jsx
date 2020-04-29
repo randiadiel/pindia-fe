@@ -53,10 +53,7 @@ class RegisterPage extends Component {
         birthday,
         address,
       };
-      const { status, message } = await Api.handlePost(
-        "/users/create",
-        registered
-      );
+      const { status, message } = await Api.handlePost("/users", registered);
       if (status === 200) {
         this.setState({ success: true, message });
       } else this.setState({ message });

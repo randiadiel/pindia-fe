@@ -26,9 +26,12 @@ class LoginPage extends Component {
       password,
     };
     const promise = await AuthServices.login(credential);
-    const { status, message, result } = promise.data;
+    console.log(promise);
+    const { status, data } = promise;
+    const { access_token, message } = data;
+    console.log(access_token);
     if (status === 200) {
-      localStorage.setItem("userInfo", JSON.stringify(result));
+      localStorage.setItem("userInfo", JSON.stringify(data));
     } else {
       this.setState({ error: true });
       this.setState({ message });
@@ -58,6 +61,11 @@ class LoginPage extends Component {
                     value={this.state[input.name]}
                   ></TextBox>
                 ))}
+                <input
+                  className="loginButton"
+                  type="submit"
+                  value="Login"
+                ></input>
               </form>
             </div>
           </div>

@@ -11,12 +11,13 @@ class AuthServices {
   }
 
   getAuthHeader() {
-    return { headers: { Authorization: `Bearer ${this.getUserInfo().token}` } };
+    return {
+      headers: { Authorization: `Bearer ${this.getUserInfo().access_token}` },
+    };
   }
 
   logout() {
     localStorage.removeItem("userInfo");
-    return axios.post(`${API.BASE_URL}/logout`, {}, this.getAuthHeader());
   }
 }
 
