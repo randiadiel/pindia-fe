@@ -4,23 +4,28 @@ import AuthServices from "../../auth/AuthServices";
 
 class HomePage extends Component {
   state = {
-    user: {},
+    user: {
+      role: 0,
+    },
   };
   componentDidMount() {
-    const user = JSON.parse(localStorage.getItem("userInfo")).data;
-    if (user) {
+    const response = localStorage.getItem("userInfo");
+    if (response) {
+      const user = JSON.parse(response).data;
       this.setState({ user });
+    } else {
+      this.handleLogout();
     }
   }
   handleLogout = () => {
     AuthServices.logout();
-    this.setState({ user: {} });
+    this.setState({ user: { role: 0 } });
   };
   render() {
     return (
       <div>
         <h1>HomePage</h1>
-        {!this.state.user ? (
+        {this.state.user.role === 0 ? (
           <Link to="login">Login</Link>
         ) : (
           <button onClick={this.handleLogout}>Logout</button>
