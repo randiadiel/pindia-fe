@@ -32,12 +32,9 @@ class LoginPage extends Component {
       password,
     };
     const promise = await AuthServices.login(credential);
-    console.log(promise);
-    const { status, data } = promise;
-    const { access_token, message } = data;
-    console.log(access_token);
+    const { message, status } = promise;
     if (status === 200) {
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      localStorage.setItem("userInfo", JSON.stringify(promise));
       this.setState({ isLoggedIn: true });
     } else {
       this.setState({ message });

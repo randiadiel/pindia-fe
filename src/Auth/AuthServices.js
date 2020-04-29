@@ -3,7 +3,17 @@ import { API } from "../api/ApiConfig";
 
 class AuthServices {
   login(credentials) {
-    return axios.post(`${API.BASE_URL}/login`, credentials);
+    const promise = new Promise((resolve, reject) => {
+      axios.post(`${API.BASE_URL}/login`, credentials).then(
+        (res) => {
+          resolve(res.data);
+        },
+        (err) => {
+          reject(err);
+        }
+      );
+    });
+    return promise;
   }
 
   getUserInfo() {
@@ -18,6 +28,7 @@ class AuthServices {
 
   logout() {
     localStorage.removeItem("userInfo");
+    localStorage.clear();
   }
 }
 
