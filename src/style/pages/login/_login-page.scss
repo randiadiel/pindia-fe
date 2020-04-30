@@ -18,6 +18,15 @@
         font-family: cerapro-bold;
         margin-bottom: 1rem;
       }
+      & .loginButton {
+        width: 6rem;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: #ffc000;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 2px 2px 3px rgba($color: #000000, $alpha: 0.3);
+      }
     }
   }
   & .quotes {
@@ -30,6 +39,7 @@
     }
     & > h1 {
       font-size: 70px;
+      font-family: cerapro-black;
     }
     & > h5 {
       font-family: cerapro-thin;
@@ -45,7 +55,7 @@
   & .layer {
     position: absolute;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     background: rgba($color: #000, $alpha: 0.6);
     margin-left: -15px;
     z-index: 2;
@@ -57,7 +67,7 @@
     background-image: url("../../../assets/register-login-bg.jpg");
     background-position-x: -2rem;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
     z-index: 1;
   }
 }

@@ -1,19 +1,44 @@
-import Axios from "axios";
+import axios from "axios";
 import { API } from "./ApiConfig";
+import AuthServices from "../auth/AuthServices";
 
 class Api {
-  handlePost = async (endpoint, data) => {
-    const response = await Axios.post(API.BASE_URL + endpoint, data, {
-      headers: {
-        "Content-type": "application/json;",
-      },
+  handlePost = async (endpoint, data, isPrivate) => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .post(
+          API.BASE_URL + endpoint,
+          data,
+          isPrivate ? AuthServices.getAuthHeader() : {}
+        )
+        .then(
+          (res) => {
+            resolve(res.data);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
-    return response;
+    return promise;
   };
-  handleGet = async (endpoint) => {
-    const promise = await Axios.get(API.BASE_URL + endpoint);
-    const response = await promise;
-    return response;
+  handleGet = async (endpoint, isPrivate) => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get(
+          API.BASE_URL + endpoint,
+          isPrivate ? AuthServices.getAuthHeader() : {}
+        )
+        .then(
+          (res) => {
+            resolve(res.data);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
+    });
+    return promise;
   };
 }
 

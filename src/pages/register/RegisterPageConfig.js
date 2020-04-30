@@ -17,8 +17,8 @@ const inputs = {
     placeholder: "example@company.com",
     label: "Email",
   },
-  phoneNumber: {
-    name: "phoneNumber",
+  telephone: {
+    name: "telephone",
     type: "text",
     placeholder: "08455655123",
     label: "Phone Number",
@@ -34,6 +34,36 @@ const inputs = {
     type: "password",
     placeholder: "Must be the same",
     label: "Confirm Password",
+  },
+  gender: {
+    name: "gender",
+    type: "select",
+    placeholder: "Choose One",
+    label: "Gender",
+    options: [
+      {
+        id: 1,
+        value: "Male",
+        text: "Male",
+      },
+      {
+        id: 2,
+        value: "Female",
+        text: "Female",
+      },
+    ],
+  },
+  birthday: {
+    name: "birthday",
+    type: "date",
+    placeholder: "Input your birhtday",
+    label: "Birth Date",
+  },
+  address: {
+    name: "address",
+    type: "textarea",
+    placeholder: "Jl. Siliwangi Raya, Jakarta Barat, DKI JAKARTA, 11546",
+    label: "Address",
   },
 };
 

@@ -6,8 +6,9 @@ class TextBox extends Component {
     const { type, placeholder, name, label } = input;
     return (
       <div className="text-box">
-        <label>{label}</label>
+        <label htmlFor={name}>{label}</label>
         <input
+          id={name}
           type={type}
           placeholder={placeholder}
           name={name}

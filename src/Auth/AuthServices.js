@@ -1,9 +1,19 @@
-import axios from "./node_modules/axios";
+import axios from "axios";
 import { API } from "../api/ApiConfig";
 
 class AuthServices {
   login(credentials) {
-    return axios.post(`${API.BASE_URL}/login`, credentials);
+    const promise = new Promise((resolve, reject) => {
+      axios.post(`${API.BASE_URL}/login`, credentials).then(
+        (res) => {
+          resolve(res.data);
+        },
+        (err) => {
+          reject(err);
+        }
+      );
+    });
+    return promise;
   }
 
   getUserInfo() {
@@ -11,12 +21,14 @@ class AuthServices {
   }
 
   getAuthHeader() {
-    return { headers: { Authorization: `Bearer ${this.getUserInfo().token}` } };
+    return {
+      headers: { Authorization: `Bearer ${this.getUserInfo().access_token}` },
+    };
   }
 
   logout() {
     localStorage.removeItem("userInfo");
-    return axios.post(`${API.BASE_URL}/logout`, {}, this.getAuthHeader());
+    localStorage.clear();
   }
 }
 

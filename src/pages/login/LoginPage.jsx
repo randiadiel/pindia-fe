@@ -1,20 +1,50 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import TextBox from "../../components/common/input/TextBox";
+import Alert from "../../components/common/alert/Alert";
 import { inputs } from "./LoginPageConfig";
 import Logo from "../../assets/logo.png";
+import AuthServices from "../../auth/AuthServices";
 
 class LoginPage extends Component {
   state = {
     email: "",
     password: "",
+    success: false,
+    message: "",
+    isLoggedIn: false,
   };
+  componentDidMount() {
+    if (localStorage.getItem("userInfo")) {
+      this.setState({ isLoggedIn: true });
+    }
+  }
   onChange = (e) => {
     const target = e.target;
     this.setState({ [target.name]: target.value });
   };
 
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    const credential = {
+      email,
+      password,
+    };
+    const promise = await AuthServices.login(credential);
+    const { message, status } = promise;
+    if (status === 200) {
+      localStorage.setItem("userInfo", JSON.stringify(promise));
+      this.setState({ isLoggedIn: true });
+    } else {
+      this.setState({ message });
+    }
+  };
+
   render() {
+    if (this.state.isLoggedIn) {
+      return <Redirect to="/"></Redirect>;
+    }
     return (
       <div className="login-page container-fluid">
         <div className="row">
@@ -23,7 +53,11 @@ class LoginPage extends Component {
               <Link to="/">
                 <img src={Logo} alt="logo-pindia"></img>
               </Link>
-              <form className="container">
+              <form className="container" onSubmit={this.handleSubmit}>
+                <Alert
+                  visible={this.state.message === "" ? false : true}
+                  message={this.state.message}
+                ></Alert>
                 <h1>Login to your account</h1>
                 {inputs.map((input) => (
                   <TextBox
@@ -33,6 +67,11 @@ class LoginPage extends Component {
                     value={this.state[input.name]}
                   ></TextBox>
                 ))}
+                <input
+                  className="loginButton"
+                  type="submit"
+                  value="Login"
+                ></input>
               </form>
             </div>
           </div>
