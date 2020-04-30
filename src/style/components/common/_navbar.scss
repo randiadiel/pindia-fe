@@ -1,0 +1,38 @@
+.navbar {
+  & > .navBar-row {
+    width: 100vw;
+    & > .logo {
+      & img {
+        height: 85%;
+        padding: 1rem;
+      }
+    }
+    & > .searchBar {
+      padding-top: 1rem;
+    }
+    & > .links {
+      display: inline-flex;
+      padding-top: 1.5rem;
+      & > .en-logo {
+        font-family: cerapro-bold;
+        height: 40%;
+        width: 20%;
+      }
+      & > .cart-logo {
+        background-image: url("../../../assets/cart-logo.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40%;
+        width: 20%;
+        margin: 0 1rem;
+      }
+      & > .R-logo {
+        background-image: url("../../../assets/R-logo.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 40%;
+        width: 20%;
+      }
+    }
+  }
+}
