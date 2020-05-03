@@ -1,53 +1,61 @@
 .navbar {
-  & > .navBar-row {
-    width: 100vw;
+  & nav {
+    padding-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     & > .logo {
       & .logo-pindia {
         height: 10%;
         padding: 1rem;
       }
     }
-    & > .searchBar {
-      padding-top: 1rem;
+    & > .search-bar {
       position: relative;
+      width: 35rem;
       & input {
         border: none;
         background-color: grayscale($color: #f5f5f5);
         box-shadow: 2px 2px 5px lightgrey;
+        height: 2.5rem;
       }
       & .logo-search {
         position: absolute;
-        height: 20x;
-        width: 20px;
-        top: 1.5rem;
-        right: 1.5rem;
+        height: 1.5rem;
+        right: 1rem;
+        top: 50%;
+        transform: translate(0, -50%);
         fill: red($color: #000000);
       }
     }
-    & > .links {
-      display: inline-flex;
-      padding-top: 1rem;
-      & .en-logo {
-        height: 40%;
-        width: 20%;
-        margin-left: 35%;
-        & .logo-en {
-          height: 5%;
+    & .profile-section {
+      display: flex;
+      align-items: center;
+      & > a {
+        text-decoration: none;
+        color: black;
+        & h4 {
+          margin-bottom: 0;
         }
       }
-      & .cart-logo {
-        height: 40%;
-        width: 20%;
-        margin-right: 5%;
-        & .logo-cart {
-          height: 10%;
-        }
+      & .logo-cart {
+        height: 2rem;
       }
-      & .R-logo {
-        height: 40%;
-        width: 20%;
-        & .logo-R {
-          height: 10%;
+      & .profile-logo {
+        height: 2rem;
+        width: 2rem;
+        background-color: black;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "cerapro-bold";
+
+        & .profile-initial {
+          margin: 0;
+          text-decoration: none;
+          color: white;
         }
       }
     }

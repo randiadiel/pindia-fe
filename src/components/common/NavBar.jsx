@@ -2,50 +2,53 @@ import React, { Component } from "react";
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import CartLogo from "../../assets/cart.svg";
-import RLogo from "../../assets/R-logo.svg";
-import EnLogo from "../../assets/en-logo.svg";
 import SearchLogo from "../../assets/search.svg";
 
 class NavBar extends Component {
+  state = {
+    term: "",
+  };
+  onChange = (e) => {
+    const term = e.target.value;
+    this.setState({ term });
+  };
   render() {
     return (
-      <div className="navbar container-fluid">
-        <div className="row navBar-row">
-          <div className="col-md-2 logo">
+      <div className="navbar container">
+        <nav>
+          <div>
             <Link to="/">
-              <img className="logo-pindia" src={Logo} alt="logo-pindia"></img>
+              <img src={Logo} alt="Logo-Pindia" />
             </Link>
           </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-6 searchBar">
+          <div className="search-bar">
             <input
               className="form-control mr-sm-2"
               type="search"
               placeholder="Search for items, brands, and shops"
+              onChange={this.onChange}
+              value={this.state.term}
             ></input>
-            <Link to="/">
-              <img className="logo-search" src={SearchLogo}></img>
-            </Link>
+            {this.state.term === "" && (
+              <img className="logo-search" src={SearchLogo} alt="search"></img>
+            )}
           </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-2 links">
-            <div className="en-logo">
+          <div>
+            <div className="profile-section">
               <Link to="/">
-                <img className="logo-en" src={EnLogo}></img>
+                <h4 className="mx-2">en</h4>
               </Link>
-            </div>
-            <div className="cart-logo">
               <Link to="/">
-                <img className="logo-cart" src={CartLogo}></img>
+                <img className="logo-cart mx-2" src={CartLogo} alt="cartLogo" />
               </Link>
-            </div>
-            <div className="R-logo">
-              <Link to="/">
-                <img className="logo-R" src={RLogo}></img>
-              </Link>
+              <div className="profile-logo mx-2">
+                <Link to="/">
+                  <h5 className="profile-initial">A</h5>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </nav>
       </div>
     );
   }
