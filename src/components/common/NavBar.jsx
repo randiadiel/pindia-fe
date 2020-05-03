@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
+import CartLogo from "../../assets/cart.svg";
+import RLogo from "../../assets/R-logo.svg";
+import EnLogo from "../../assets/en-logo.svg";
+import SearchLogo from "../../assets/search.svg";
 
 class NavBar extends Component {
   render() {
@@ -9,23 +13,37 @@ class NavBar extends Component {
         <div className="row navBar-row">
           <div className="col-md-2 logo">
             <Link to="/">
-              <img src={Logo} alt="logo-pindia"></img>
+              <img className="logo-pindia" src={Logo} alt="logo-pindia"></img>
             </Link>
           </div>
           <div className="col-md-1"></div>
           <div className="col-md-6 searchBar">
             <input
-              class="form-control mr-sm-2"
+              className="form-control mr-sm-2"
               type="search"
               placeholder="Search for items, brands, and shops"
-              aria-label="Search"
             ></input>
+            <Link to="/">
+              <img className="logo-search" src={SearchLogo}></img>
+            </Link>
           </div>
           <div className="col-md-1"></div>
           <div className="col-md-2 links">
-            <div className="en-logo">en</div>
-            <div className="cart-logo"></div>
-            <div className="R-logo"></div>
+            <div className="en-logo">
+              <Link to="/">
+                <img className="logo-en" src={EnLogo}></img>
+              </Link>
+            </div>
+            <div className="cart-logo">
+              <Link to="/">
+                <img className="logo-cart" src={CartLogo}></img>
+              </Link>
+            </div>
+            <div className="R-logo">
+              <Link to="/">
+                <img className="logo-R" src={RLogo}></img>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -2,36 +2,53 @@
   & > .navBar-row {
     width: 100vw;
     & > .logo {
-      & img {
-        height: 85%;
+      & .logo-pindia {
+        height: 10%;
         padding: 1rem;
       }
     }
     & > .searchBar {
       padding-top: 1rem;
+      position: relative;
+      & input {
+        border: none;
+        background-color: grayscale($color: #f5f5f5);
+        box-shadow: 2px 2px 5px lightgrey;
+      }
+      & .logo-search {
+        position: absolute;
+        height: 20x;
+        width: 20px;
+        top: 1.5rem;
+        right: 1.5rem;
+        fill: red($color: #000000);
+      }
     }
     & > .links {
       display: inline-flex;
-      padding-top: 1.5rem;
-      & > .en-logo {
-        font-family: cerapro-bold;
+      padding-top: 1rem;
+      & .en-logo {
         height: 40%;
         width: 20%;
+        margin-left: 35%;
+        & .logo-en {
+          height: 5%;
+        }
       }
-      & > .cart-logo {
-        background-image: url("../../../assets/cart-logo.png");
-        background-size: contain;
-        background-repeat: no-repeat;
+      & .cart-logo {
         height: 40%;
         width: 20%;
-        margin: 0 1rem;
+        margin-right: 5%;
+        & .logo-cart {
+          height: 10%;
+        }
       }
-      & > .R-logo {
-        background-image: url("../../../assets/R-logo.png");
-        background-size: contain;
-        background-repeat: no-repeat;
+      & .R-logo {
         height: 40%;
         width: 20%;
+        & .logo-R {
+          height: 10%;
+        }
       }
     }
   }

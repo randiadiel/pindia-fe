@@ -1,11 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import NavBar from "../../components/common/NavBar";
-||||||| cdccec9
-=======
 import AuthServices from "../../auth/AuthServices";
->>>>>>> 1894f958bcf0ed50a1814c1dc5025d2c66fdaec5
 
 class HomePage extends Component {
   state = {
