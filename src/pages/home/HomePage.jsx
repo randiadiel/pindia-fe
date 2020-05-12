@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/common/NavBar";
+import Banner from "../../components/common/Banner";
 import AuthServices from "../../auth/AuthServices";
+import Api, { API } from "../../api/Api";
 
 class HomePage extends Component {
   state = {
     user: {
       role: 0,
     },
+    term: "",
   };
   componentDidMount() {
     const response = localStorage.getItem("userInfo");
@@ -22,10 +25,31 @@ class HomePage extends Component {
     AuthServices.logout();
     this.setState({ user: { role: 0 } });
   };
+  onSubmit = (e) => {
+    e.preventDefault();
+    const term = e.target[0].value;
+    this.setState({ term });
+    console.log(this.state.term);
+    const params = {
+      q: "jambu",
+    };
+    const searchResponse = Api.handleGetParams(
+      "/products/search",
+      params,
+      true
+    );
+    console.log(searchResponse);
+  };
   render() {
+    // if (this.state.term !== "") {
+    //   return;
+    // }
     return (
       <div className="home-page">
-        <NavBar></NavBar>
+        <form onSubmit={this.onSubmit}>
+          <NavBar></NavBar>
+        </form>
+        <Banner></Banner>
         <h1>HomePage</h1>
         {this.state.user.role === 0 ? (
           <React.Fragment>

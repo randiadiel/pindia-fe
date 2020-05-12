@@ -40,6 +40,23 @@ class Api {
     });
     return promise;
   };
+  handleGetParams = async (endpoint, params, isPrivate) => {
+    const config = {
+      headers: isPrivate ? AuthServices.getAuthHeader() : {},
+      params,
+    };
+    const promise = new Promise((resolve, reject) => {
+      axios.get(API.BASE_URL + endpoint, config).then(
+        (res) => {
+          resolve(res.data);
+        },
+        (err) => {
+          reject(err);
+        }
+      );
+    });
+    return promise;
+  };
 }
 
 export default new Api();
